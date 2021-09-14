@@ -1,0 +1,40 @@
+{% extends 'LapApp/base.html' %}
+{% load crispy_forms_tags %}
+
+    {% block block1 %}
+        <title>All Laptop Information</title>
+    {% endblock %}
+
+{% block block2 %}
+
+<table class="table table-striped table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Model Name</th>
+                <th>Company</th>
+                <th>Ram</th>
+                <th>Rom</th>
+                <th>Weight</th>
+                <th>Processor</th>
+            </tr>
+
+            {% for data in object_list %}
+
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.model_name}}</td>
+                <td>{{data.company}}</td>
+                <td>{{data.Ram}}</td>
+                <td>{{data.Rom}}</td>
+                <td>{{data.Weight}}</td>
+                <td>{{data.Processor}}</td>
+                <td><a href="{% url 'update' data.id %}"><button class="btn btn-info">Update</button></a></td>
+                <td><a href="{% url 'delete' data.id %}"><button class="btn btn-danger">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+</table>
+
+<h3 style="text-align:center"><a href="{% url 'create' %}"><button class="btn btn-success">Add Laptop</button></a></h3>
+
+
+    {% endblock %}
